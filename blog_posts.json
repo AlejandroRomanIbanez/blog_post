@@ -1,1 +1,14 @@
-[{"id": 1, "author": "Alex", "title": "Learning Flask", "content": "Cool new feature"}, {"id": 2, "author": "Alex", "title": "Learning Flask", "content": "cool"}]
+[
+    {
+        "id": 1,
+        "author": "Alex",
+        "title": "asdas",
+        "content": "asdasdasd"
+    },
+    {
+        "id": 2,
+        "author": "Alex",
+        "title": "Best Flask ever",
+        "content": "edited comment with updated"
+    }
+]
