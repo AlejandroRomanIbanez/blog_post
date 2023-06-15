@@ -2,13 +2,19 @@
     {
         "id": 1,
         "author": "Alex",
-        "title": "asdas",
-        "content": "asdasdasd"
+        "title": "MasterSchool",
+        "content": "Masterschool is cool"
     },
     {
         "id": 2,
-        "author": "Alex",
-        "title": "Best Flask ever",
-        "content": "edited comment with updated"
+        "author": "sadas",
+        "title": "asdassd",
+        "content": "adsdasd\r\n"
+    },
+    {
+        "id": 3,
+        "author": "asdsa",
+        "title": "asda",
+        "content": "asdsa"
     }
 ]

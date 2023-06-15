@@ -3,7 +3,8 @@ import json
 
 app = Flask(__name__)
 
-
+with open('blog_post/blog_posts.json', 'r') as file:
+    blog_posts = json.load(file)
 @app.route('/')
 def index():
     with open('blog_post/blog_posts.json', 'r') as file:
@@ -18,8 +19,6 @@ def generate_id():
     else:
         existing_ids = [post['id'] for post in blog_posts]
         return max(existing_ids) + 1
-
-blog_posts = []
 
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -66,11 +65,16 @@ def fetch_post_by_id(id):
                 return post
 
 
-@app.route('/update/<int:post_id>', methods=['GET', 'POST'])
-def update(post_id):
+def update(post_id, blog_posts):
+    post_id = int(post_id)
+
     index = next((index for index, post in enumerate(blog_posts) if post['id'] == post_id), None)
+
     if index is None:
         return "Post not found", 404
+
+    if request.method == 'GET':
+        return render_template('update.html', post=blog_posts[index])
 
     if request.method == 'POST':
         title = request.form['title']
@@ -83,7 +87,13 @@ def update(post_id):
         with open('blog_post/blog_posts.json', 'w') as file:
             json.dump(blog_posts, file, indent=4)
         return redirect(url_for('index'))
-    return render_template('update.html', post=blog_posts[index])
+
+@app.route('/update/<int:post_id>', methods=['GET', 'POST'])
+def update_post(post_id):
+    with open('blog_post/blog_posts.json', 'r') as file:
+        blog_posts = json.load(file)
+
+    return update(post_id, blog_posts)
 
 
 if __name__ == '__main__':
