@@ -19,6 +19,13 @@
         <form action="/update/{{ post.id }}" method="get">
             <button type="submit">Update</button>
         </form>
+        <br>
+        <form action="/like/{{ post.id }}" method="post">
+            <button type="submit">Likes</button>
+             {% if 'likes' in post %}
+                <span>{{ post.likes }}</span>
+             {% endif %}
+        </form>
     </div>
     {% endfor %}
     <a href="/add">Add a new post!</a>

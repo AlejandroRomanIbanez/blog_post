@@ -3,18 +3,41 @@
         "id": 1,
         "author": "Alex",
         "title": "MasterSchool",
-        "content": "Masterschool is cool"
+        "content": "Masterschool is cool",
+        "likes": 4
     },
     {
         "id": 2,
         "author": "Alex",
         "title": "blabla",
-        "content": "Bla bla"
+        "content": "Bla bla",
+        "likes": 2
     },
     {
         "id": 3,
-        "author": "asdsa",
-        "title": "asda",
-        "content": "asdsa"
+        "author": "upup",
+        "title": "update",
+        "content": "up",
+        "likes": 2
+    },
+    {
+        "id": 4,
+        "author": "bla",
+        "title": "blabla",
+        "content": "blablabal",
+        "likes": 1
+    },
+    {
+        "id": 5,
+        "author": "sdadasd",
+        "title": "asdasd",
+        "content": "dasdasdas",
+        "likes": 1
+    },
+    {
+        "id": 6,
+        "author": "asdadada",
+        "title": "dasdasd",
+        "content": "asdadas"
     }
 ]
