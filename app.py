@@ -5,6 +5,8 @@ app = Flask(__name__)
 
 with open('blog_post/blog_posts.json', 'r') as file:
     blog_posts = json.load(file)
+
+
 @app.route('/')
 def index():
     """
@@ -93,6 +95,7 @@ def update(post_id, blog_posts):
             json.dump(blog_posts, file, indent=4)
         return redirect(url_for('index'))
 
+
 @app.route('/update/<int:post_id>', methods=['GET', 'POST'])
 def update_post(post_id):
     """
@@ -103,6 +106,7 @@ def update_post(post_id):
 
     return update(post_id, blog_posts)
 
+
 @app.route('/like/<int:post_id>', methods=['POST'])
 def like_post(post_id):
     """
@@ -111,22 +115,17 @@ def like_post(post_id):
     with open('blog_post/blog_posts.json', 'r') as file:
         blog_posts = json.load(file)
 
-    # Find the post with the specified post_id
     for post in blog_posts:
         if post['id'] == post_id:
-            # Increment the likes count for the post
             if 'likes' not in post:
                 post['likes'] = 0
             post['likes'] += 1
             break
 
-    # Update the blog_posts.json file with the updated data
     with open('blog_post/blog_posts.json', 'w') as file:
         json.dump(blog_posts, file, indent=4)
 
     return redirect(url_for('index'))
-
-
 
 
 if __name__ == '__main__':
