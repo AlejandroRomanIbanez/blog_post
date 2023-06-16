@@ -7,12 +7,18 @@ with open('blog_post/blog_posts.json', 'r') as file:
     blog_posts = json.load(file)
 @app.route('/')
 def index():
+    """
+    Renders the index page and displays all the blog posts.
+    """
     with open('blog_post/blog_posts.json', 'r') as file:
         blog_posts = json.load(file)
     return render_template('index.html', posts=blog_posts)
 
 
 def generate_id():
+    """
+    Generates a new unique ID for a blog post.
+    """
     if not blog_posts:
         return 1
     else:
@@ -22,6 +28,9 @@ def generate_id():
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+    """
+    Handles the addition of a new blog post.
+    """
     if request.method == 'POST':
         author = request.form['author']
         title = request.form['title']
@@ -41,6 +50,9 @@ def add():
 
 @app.route('/delete/<int:post_id>', methods=['GET', 'POST'])
 def delete(post_id):
+    """
+    Handles the deletion of a blog post.
+    """
     if request.method == 'POST':
         with open('blog_post/blog_posts.json', 'r') as file:
             blog_posts = json.load(file)
@@ -56,6 +68,9 @@ def delete(post_id):
 
 
 def update(post_id, blog_posts):
+    """
+    Handles the updating of a blog post.
+    """
     post_id = int(post_id)
 
     index = next((index for index, post in enumerate(blog_posts) if post['id'] == post_id), None)
@@ -80,6 +95,9 @@ def update(post_id, blog_posts):
 
 @app.route('/update/<int:post_id>', methods=['GET', 'POST'])
 def update_post(post_id):
+    """
+    Handles the update post route.
+    """
     with open('blog_post/blog_posts.json', 'r') as file:
         blog_posts = json.load(file)
 
@@ -87,6 +105,9 @@ def update_post(post_id):
 
 @app.route('/like/<int:post_id>', methods=['POST'])
 def like_post(post_id):
+    """
+    Handles the liking of a blog post.
+    """
     with open('blog_post/blog_posts.json', 'r') as file:
         blog_posts = json.load(file)
 
